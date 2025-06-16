@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import spacy
 import difflib
+import os
+import uvicorn
 
 app = FastAPI()
 
@@ -26,3 +28,7 @@ def compute_syntax_similarity(text1, text2):
 def syntax_similarity(data: Texts):
     score = compute_syntax_similarity(data.text1, data.text2)
     return {"syntax_similarity_score": round(score, 4)}
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Renderが$PORTを設定
+    uvicorn.run(app, host="0.0.0.0", port=port)
