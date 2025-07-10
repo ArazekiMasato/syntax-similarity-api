@@ -51,7 +51,7 @@ def compute_syntax_similarity(text1, text2):
     len_sim = compute_token_length_similarity(doc1, doc2)
     depth_sim = compute_tree_depth_similarity(doc1, doc2)
 
-　# 総合スコアの計算
+    # 総合スコアの計算
     final_score = (
         0.5 * dep_sim +
         0.25 * len_sim +
